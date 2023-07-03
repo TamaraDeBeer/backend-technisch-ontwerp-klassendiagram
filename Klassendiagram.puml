@@ -1,0 +1,50 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+class User {
+-username: String
+-password: String
+-getUsernameAndPassword(): String
+-setUsernameAndPassword(): String
+}
+
+Abstract class Product {
+-type: String
+-brand: String
+-price: double
+-available: Boolean
++getTypeAndBrandAndPriceAndAvailable(): String
++setTypeAndBrandAndPriceAndAvailable(): String
++addProduct(): Array
+}
+
+class Television {
+-compatibleWith: List<String>
++getCompatibleWith(): List<String>
+}
+
+class RemoteControl {
+-compatibleWith: List<String>
++getCompatibleWith(): List<String>
+}
+
+class WallBracket {
+-compatibleWith: List<String>
++getCompatibleWith(): List<String>
+}
+
+class CiModule {
+-compatibleWith: List<String>
++getCompatibleWith(): List<String>
+}
+
+Product <|-[bold]- Television
+Product <|-[bold]- RemoteControl
+Product <|-[bold]- WallBracket
+Product <|-[bold]- CiModule
+
+Television "0..*"-[#green]-"0..1" RemoteControl
+Television "0..*"-[#green]-"0..1" WallBracket
+Television "0..*"-[#green]-"0..1" CiModule
+
+@enduml
